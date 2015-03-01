@@ -2,7 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var winston = require('winston');
-
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/skorr');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -33,8 +34,7 @@ var port = process.env.PORT || 8080;
 var apiRouter = express.Router();
 
 
-
-
+require('./api.js')(apiRouter);
 
 
 // use router
